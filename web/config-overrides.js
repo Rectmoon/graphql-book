@@ -4,21 +4,12 @@ const resolve = dir => path.resolve(__dirname, dir)
 
 module.exports = {
   webpack: override(
-    override(
-      addWebpackAlias({
-        '@': resolve('src')
-      })
-    ),
-    ...addBabelPlugins(
-      ['react-loadable/babel'],
-      [
-        '@babel/plugin-proposal-decorators',
-        {
-          legacy: true
-        }
-      ]
-    )
+    addWebpackAlias({
+      '@': resolve('src')
+    }),
+    addBabelPlugins(['react-loadable/babel'])
   ),
+
   paths: paths => {
     paths.appBuild = path.resolve(__dirname, '../server/public')
     paths.servedPath = '/public/'
